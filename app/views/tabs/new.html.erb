@@ -1,0 +1,5 @@
+<%= form_for @item, url: {action: "new"} do |f| %>
+  <%= f.text_field :user_id %>
+  <%= f.text_field :vendor_id %>
+  <%= f.submit "Create" %>
+<% end %>
