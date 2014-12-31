@@ -1,0 +1,8 @@
+<h1> New Vendor</h1>
+<%= form_for @vendor do |f| %>
+  <%= f.text_field :name %><label>name</label><br>
+  <%= f.text_field :description %><label>description</label><br>
+  <%= f.text_field :address %><label>address</label><br>
+  <%= f.text_field :image %><label>image</label><br>
+  <%= f.submit "Create" %>
+<% end %>

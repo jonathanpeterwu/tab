@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.all
+		render json: @users
 	end
 
 	def new
@@ -9,16 +10,32 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.create(params)
+		#check parameters of user && is user admin to create || pay for bill
+		@user = User.new
+		@user.name = params[:user][:name]
+		@user.birthday = params[:user][:birthday]
+		@user.image = params[:user][:image]
+		@user.facebook_id = params[:user][:facebook_id]
+		if @user.save!
+			render json: @user
+		else
+			p "error"
+		end
 	end
 
 	def show
-		@user = User.find(id: params[:id])
+		@user = User.find(params[:id])
+		render json: @user
 	end
 
 	def edit
-		@user = User.find(id: params[:id])
-		#do some editing
+		# is user authorized to edit user?
+		@user = User.find(params[:id])
+		if @user.id == session[:id]
+			#update user
+		else
+			#redirect to error page
+		end
 	end
 
 	def update

@@ -1,6 +1,7 @@
-<%= form_for @item, url: {action: "new"} do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_field :description %>
-  <%= f.text_field :price %>
+<h1> New Item</h1>
+<%= form_for @item do |f| %>
+  <%= f.text_field :title %><label>Name</label><br>
+  <%= f.text_field :description %><label>Description</label><br>
+  <%= f.text_field :price %><label>Price</label><br>
   <%= f.submit "Create" %>
 <% end %>

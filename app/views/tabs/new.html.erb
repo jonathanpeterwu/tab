@@ -1,5 +1,9 @@
-<%= form_for @item, url: {action: "new"} do |f| %>
-  <%= f.text_field :user_id %>
-  <%= f.text_field :vendor_id %>
-  <%= f.submit "Create" %>
+<h1> New Tab</h1>
+<%= form_for @tab, url: {action: "create"} do |f| %>
+  <%= f.text_field :user_id %><label>User</label><br>
+  <%= f.text_field :vendor_id %><label>Vendor</label><br>
+  <%= f.text_field :item_list %><label>Item List</label><br>
+  <%= f.text_field :total %><label>Total</label><br>
+  <%= f.text_field :paid %><label>Paid?</label><br>
+  <%= f.submit "Create" %><br>
 <% end %>
