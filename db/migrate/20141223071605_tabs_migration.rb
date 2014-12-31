@@ -1,7 +1,7 @@
 class TabsMigration < ActiveRecord::Migration
   def change
   	create_table :tabs do |t|
-  		t.date :date_of_purchase
+  		t.integer :date_of_purchase
   		t.float :total
   		t.belongs_to :user
   		t.belongs_to :vendor
