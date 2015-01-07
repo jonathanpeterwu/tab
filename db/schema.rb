@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20141223073406) do
   end
 
   create_table "tabs", force: :cascade do |t|
-    t.date    "date_of_purchase"
+    t.integer "date_of_purchase"
     t.float   "total"
     t.integer "user_id"
     t.integer "vendor_id"
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20141223073406) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.date   "birthday"
-    t.string "image"
-    t.string "facebook_id"
-    t.float  "rating"
+    t.string  "name"
+    t.integer "birthday"
+    t.string  "image"
+    t.string  "facebook_id"
+    t.float   "rating"
   end
 
   create_table "vendor_ratings", force: :cascade do |t|

@@ -1,0 +1,8 @@
+<h1> New User</h1>
+<%= form_for @user, url: {action: "create"} do |f| %>
+  <%= f.text_field :name %><label>Name</label><br>
+  <%= f.text_field :birthday %><label>Birthdate</label><br>
+  <%= f.text_field :facebook_id %><label>Facebook</label><br>
+  <%= f.text_field :image %><label>Image</label><br>
+  <%= f.submit "Create" %>
+<% end %>

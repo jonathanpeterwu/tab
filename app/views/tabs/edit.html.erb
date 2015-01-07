@@ -1,0 +1,10 @@
+<h1> Update Tab</h1>
+<%= form_for @tab do |f| %>
+	<% @items.each do |item| %>
+		<p><%= item.title %>, <%= item.price %></p>
+	<% end %>
+  <label>Add Item:</label><input type="text" name="item"></input><br>
+  <label>Current Total: <%= @tab.total %></label><br>
+  <%= f.text_field :paid %><label>Paid?</label><br>
+  <%= f.submit "Save" %><br>
+<% end %>
