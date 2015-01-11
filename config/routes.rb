@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     resources :tabs
     resources :users #, only: [:show, :create, :edit, :update]
     resources :items
+    get 'vendors/:location' => 'vendors#vendors_by_location'
     resources :vendors
-    get 'vendors_by_location/:location' => 'vendors#by_location'
 
 
 

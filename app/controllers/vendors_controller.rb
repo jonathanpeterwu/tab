@@ -37,10 +37,13 @@ class VendorsController < ApplicationController
 		# do nothing yet
 	end
 
-	def by_location
-		binding.pry
-		vendors = Vendor.select { |v| v.locate == params[:location] }
-		render json: vendors
+	def vendors_by_location
+		@vendors = Vendor.select { |v| v.locate == params[:location] }
+		if @vendors.empty?
+			render 'index'
+		else
+			render json: @vendors
+		end
 	end
 
 	private
