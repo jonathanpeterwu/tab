@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :users #, only: [:show, :create, :edit, :update]
     resources :items
     resources :vendors
+    get 'vendors_by_location/:location' => 'vendors#by_location'
+
 
 
   # Example resource route with options:

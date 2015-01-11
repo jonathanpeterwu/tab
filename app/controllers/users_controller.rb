@@ -47,9 +47,6 @@ end
 
 
 __END__
-1) A user logins/signups for the first time (GET/POST users/new)
-2) A user info route (GET users/:id)
 3) A city based vendors route (GET vendors/:location)
-4) A vendor view route (GET vendors/:id)
 5) A checkin/checkout route (GET/POST users/:id/checkin/:vendor_id)
 6) A vendor ratings route (GET/POST vendor_ratings/:rating)
