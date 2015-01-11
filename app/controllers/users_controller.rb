@@ -11,11 +11,7 @@ class UsersController < ApplicationController
 
 	def create
 		#check parameters of user && is user admin to create || pay for bill
-		@user = User.new
-		@user.name = params[:user][:name]
-		@user.birthday = params[:user][:birthday]
-		@user.image = params[:user][:image]
-		@user.facebook_id = params[:user][:facebook_id]
+		@user = User.new user_params
 		if @user.save!
 			render json: @user
 		else
@@ -42,4 +38,18 @@ class UsersController < ApplicationController
 		@user = User.create(params)
 	end
 
+	private
+
+  def user_params
+    params.require(:user).permit(:name, :birthday, :image, :facebook_id)
+  end
 end
+
+
+__END__
+1) A user logins/signups for the first time (GET/POST users/new)
+2) A user info route (GET users/:id)
+3) A city based vendors route (GET vendors/:location)
+4) A vendor view route (GET vendors/:id)
+5) A checkin/checkout route (GET/POST users/:id/checkin/:vendor_id)
+6) A vendor ratings route (GET/POST vendor_ratings/:rating)

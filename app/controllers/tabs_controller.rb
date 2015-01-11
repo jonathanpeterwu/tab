@@ -11,13 +11,9 @@ class TabsController < ApplicationController
 
 	def create
 		#check parameters of tabs
-		@tab = Tab.new
-		@tab.total = params[:tab][:total]
+		@tab = Tab.new tab_params
 		@tab.date_of_purchase = Time.now
-		@tab.user_id = params[:tab][:user_id]
-		@tab.vendor_id = params[:tab][:vendor_id]
-		@tab.item_list = params[:tab][:item_list]
-		@tab.paid
+		@tab.paid ## Is this supposed to be here like this?
 		@user = User.find(@tab.user_id)
 		@vendor = Vendor.find(@tab.vendor_id)
 		if @tab.save!
@@ -60,6 +56,12 @@ class TabsController < ApplicationController
 
 	def destroy
 		# do nothing yet
+	end
+
+	private
+
+	def tab_params
+    params.require(:tab).permit(:total, :user_id, :vendor_id, :item_list)
 	end
 
 end

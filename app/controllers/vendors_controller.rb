@@ -10,11 +10,7 @@ class VendorsController < ApplicationController
 
 	def create
 		# is user authorized to create vendor
-		@vendor = Vendor.new
-		@vendor.name = params[:vendor][:name]
-		@vendor.description = params[:vendor][:description]
-		@vendor.address = params[:vendor][:address]
-		@vendor.image = params[:vendor][:image]
+		@vendor = Vendor.new vendor_params
 		if @vendor.save!
 			render json: @vendor
 		else
@@ -41,4 +37,9 @@ class VendorsController < ApplicationController
 		# do nothing yet
 	end
 
+	private
+
+	def vendor_params
+    params.require(:vendor).permit(:name, :description, :address, :image)
+	end
 end
