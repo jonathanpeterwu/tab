@@ -4,6 +4,7 @@ class Vendor < ActiveRecord::Base
 	# has_many_belongs_to :items
   #   validates_associated :tabs, :vendor_ratings
 
+  has_many :items
 
   def locate
     self.city.downcase.gsub(' ','-')

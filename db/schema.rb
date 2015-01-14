@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223073406) do
+ActiveRecord::Schema.define(version: 20150114045127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.float  "price"
+    t.string  "title"
+    t.string  "description"
+    t.float   "price"
+    t.integer "vendor_id"
   end
 
   create_table "tabs", force: :cascade do |t|
@@ -38,11 +39,13 @@ ActiveRecord::Schema.define(version: 20141223073406) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "name"
     t.integer "birthday"
     t.string  "image"
     t.string  "facebook_id"
     t.float   "rating"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.text    "location_history", default: [], array: true
   end
 
   create_table "vendor_ratings", force: :cascade do |t|
@@ -54,9 +57,13 @@ ActiveRecord::Schema.define(version: 20141223073406) do
   create_table "vendors", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "address"
     t.string "image"
     t.float  "rating"
+    t.string "street_address1"
+    t.string "street_address2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
   end
 
 end
