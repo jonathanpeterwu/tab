@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     get 'vendor_lookup/:location' => 'vendors#vendors_by_location'
     get 'vendors/:id/items' => 'vendors#items'
     get 'vendors/:id/nearby' => 'vendors#nearby_users'
-    # get 'vendors/:id' => 'vendors#show'
 
   # Example resource route with options:
   #   resources :products do
