@@ -21,7 +21,10 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		render json: @user
+		respond_to do |format|
+			format.json {render json: @user}
+			format.html
+		end
 	end
 
 	def edit
@@ -35,18 +38,22 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user = User.create(params)
+		user = User.find params[:id]
+	end
+
+	def save_coordinates
+		user = User.find params[:id]
+		# TODO - get location from cookie or phone location or ?
+		lat_long = "[47.6097, 122.3331]"
+		user.location_history.push lat_long
+		user.save!
+		render json: user
 	end
 
 	private
 
   def user_params
-    params.require(:user).permit(:name, :birthday, :image, :facebook_id)
+    params.require(:user).permit(:first_name, :last_name, :birthday, :image, :facebook_id)
   end
 end
 
-
-__END__
-3) A city based vendors route (GET vendors/:location)
-5) A checkin/checkout route (GET/POST users/:id/checkin/:vendor_id)
-6) A vendor ratings route (GET/POST vendor_ratings/:rating)
