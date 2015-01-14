@@ -16,9 +16,11 @@ Rails.application.routes.draw do
     resources :users
     patch 'users/:id/location' => 'users#save_coordinates'
     resources :items
-    get 'vendors/:location' => 'vendors#vendors_by_location'
-    get 'vendors/:id/items' => 'vendors#items'
     resources :vendors
+    get 'vendor_lookup/:location' => 'vendors#vendors_by_location'
+    get 'vendors/:id/items' => 'vendors#items'
+    get 'vendors/:id/nearby' => 'vendors#nearby_users'
+    # get 'vendors/:id' => 'vendors#show'
 
   # Example resource route with options:
   #   resources :products do
