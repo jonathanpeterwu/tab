@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # BASSCSS integration for rails
 gem 'basscss-rails'
 
+#Rails Api
+gem 'rails-api'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
