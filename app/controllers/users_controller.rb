@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
 	def create
 		#check parameters of user && is user admin to create || pay for bill
+		pry
+		p "hellloo"
 		@user = User.new
 		@user.name = params[:user][:name]
 		@user.birthday = params[:user][:birthday]
