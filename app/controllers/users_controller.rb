@@ -50,6 +50,19 @@ class UsersController < ApplicationController
 		render json: user
 	end
 
+	def signin
+		if params[:facebook_id]
+			var user = User.find(facebook_id: params[:facebook_id])
+			if user.password == params[:password]
+				session[:id] = user.id
+			end
+		elsif params[:username]
+			var user = User.find(username: params[:username])
+			if user.password == params[:password]
+				session[:id] = user.id
+			end
+		end
+	end
 
 
 	private
