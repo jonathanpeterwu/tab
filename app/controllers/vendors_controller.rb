@@ -48,6 +48,12 @@ class VendorsController < ApplicationController
 		render json: {vendor: vendor.id, items: items}
 	end
 
+	def open_tabs
+		vendor = Vendor.find params[:id]
+		tabs = vendor.open_tabs
+		render json: {tabs: tabs}
+	end
+
 	def nearby_users
 		vendor = Vendor.find params[:id]
 		users = User.by_location vendor.city
