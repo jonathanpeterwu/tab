@@ -10,11 +10,7 @@ class VendorsController < ApplicationController
 
 	def create
 		# is user authorized to create vendor
-		@vendor = Vendor.new
-		@vendor.name = params[:vendor][:name]
-		@vendor.description = params[:vendor][:description]
-		@vendor.address = params[:vendor][:address]
-		@vendor.image = params[:vendor][:image]
+		@vendor = Vendor.new vendor_params
 		if @vendor.save!
 			render json: @vendor
 		else
@@ -41,4 +37,30 @@ class VendorsController < ApplicationController
 		# do nothing yet
 	end
 
+	def vendors_by_location
+		@vendors = Vendor.select { |v| v.locate == params[:location] }
+		if @vendors.empty?
+			render 'index'
+		else
+			render json: @vendors
+		end
+	end
+
+	def items
+		vendor = Vendor.find params[:id]
+		items = vendor.items
+		render json: {vendor: vendor.id, items: items}
+	end
+
+	def nearby_users
+		vendor = Vendor.find params[:id]
+		users = User.by_location vendor.city
+		render json: { vendor: vendor.id, users: users}
+	end
+
+	private
+
+	def vendor_params
+    params.require(:vendor).permit(:name, :description, :street_address1, :street_address2, :city, :state, :zip, :image)
+	end
 end

@@ -11,11 +11,7 @@ class UsersController < ApplicationController
 
 	def create
 		#check parameters of user && is user admin to create || pay for bill
-		@user = User.new
-		@user.name = params[:user][:name]
-		@user.birthday = params[:user][:birthday]
-		@user.image = params[:user][:image]
-		@user.facebook_id = params[:user][:facebook_id]
+		@user = User.new user_params
 		if @user.save!
 			render json: @user
 		else
@@ -25,7 +21,10 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		render json: @user
+		respond_to do |format|
+			format.json {render json: @user}
+			format.html
+		end
 	end
 
 	def edit
@@ -39,7 +38,24 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user = User.create(params)
+		user = User.find params[:id]
 	end
 
+	def save_coordinates
+		user = User.find params[:id]
+		# TODO - get location from cookie or phone location or ?
+		lat_long = "[47.6097, 122.3331]"
+		user.location_history.push lat_long
+		user.save!
+		render json: user
+	end
+
+
+
+	private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :birthday, :image, :facebook_id)
+  end
 end
+

@@ -1,6 +1,10 @@
-<% @vendors.each do |vendor| %>
-	<%= vendor.name %>
-	<%= vendor.description %>
-	<%= vendor.address %>
-	<%= vendor.rating %>
+<% if @vendors.empty? %>
+  <h2>Sorry, no vendors found</h2>
+<% else %>
+  <% @vendors.each do |vendor| %>
+  	<%= vendor.name %>
+  	<%= vendor.description %>
+  	<%= vendor.address %>
+  	<%= vendor.rating %>
+  <% end %>
 <% end %>
