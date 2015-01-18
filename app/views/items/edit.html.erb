@@ -1,8 +1,0 @@
-<h1> Edir Item</h1>
-<%= form_for @item, url: {action: "update"} do |f| %>
-  <%= f.text_field :title %><label value="<%= @item.title %>">Name</label><br>
-  <%= f.text_field :description %><label value="<%= @item.description %>">Description</label><br>
-  <%= f.text_field :price %><label value="<%= @item.price %>">Price</label><br>
-  <%= f.text_field :item_list %><label>Item List Update</label><br>
-  <%= f.submit "Edit" %>
-<% end %>

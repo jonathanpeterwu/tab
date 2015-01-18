@@ -1,6 +1,0 @@
-<h1> Edit User</h1>
-<%= form_for @user, url: {action: "update"} do |f| %>
-  <%= f.text_field :name %><label><%= @user.name %></label><br>
-  <%= f.text_field :birthday %><label><%= @user.birthday %></label><br>
-  <%= f.submit "Edit" %>
-<% end %>
