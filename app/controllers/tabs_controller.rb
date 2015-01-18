@@ -10,10 +10,8 @@ class TabsController < ApplicationController
 	end
 
 	def create
-		#check parameters of tabs
 		@tab = Tab.new tab_params
 		@tab.date_of_purchase = Time.now
-		@tab.paid ## Is this supposed to be here like this?
 		@user = User.find(@tab.user_id)
 		@vendor = Vendor.find(@tab.vendor_id)
 		if @tab.save!
