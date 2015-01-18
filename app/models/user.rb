@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	validates :facebook_id, :first_name, :last_name, :birthday, :image, presence: true
 	# validates :facebook_id, uniqueness: true
-	# has_many :tabs, :user_ratings
+	has_many :tabs
 	# validates_associated :tabs, :user_ratings
   def self.by_location location
     self.select { |u| u.most_recent_location == location }

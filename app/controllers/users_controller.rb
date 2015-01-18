@@ -21,10 +21,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		respond_to do |format|
-			format.json {render json: @user}
-			format.html
-		end
+		render json: @user
 	end
 
 	def edit
@@ -50,7 +47,11 @@ class UsersController < ApplicationController
 		render json: user
 	end
 
-
+	def tabs
+		user = User.find params[:id]
+		tabs = user.tabs
+		render json: tabs
+	end
 
 	private
 

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :tabs
     resources :users
     patch 'users/:id/location' => 'users#save_coordinates'
+    get 'users/:id/tabs' => 'users#tabs'
     resources :items
     resources :vendors
     get 'vendor_lookup/:location' => 'vendors#vendors_by_location'
