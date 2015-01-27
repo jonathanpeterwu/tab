@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'users/:id/tabs' => 'users#tabs'
     resources :items
     resources :vendors
-    get 'vendor_lookup/:location' => 'vendors#vendors_by_location'
+    get 'vendors/location/:location' => 'vendors#vendors_by_location'
     get 'vendors/:id/items' => 'vendors#items'
     get 'vendors/:id/tabs' => 'vendors#open_tabs'
     get 'vendors/:id/nearby' => 'vendors#nearby_users'
